@@ -1,6 +1,6 @@
 // CCLab Mini Project - 9.R Particle World Template
 
-let NUM_OF_PARTICLES = 3; // Decide the initial number of particles.
+let NUM_OF_PARTICLES = 50; // Decide the initial number of particles.
 
 let particles = [];
 
@@ -17,6 +17,11 @@ function setup() {
 function draw() {
   background(50);
 
+  particles.push(new Particle(mouseX, mouseY))
+
+  if(particles.length>100){
+    particles.shift()
+  }
   // update and display
   for (let i = 0; i < particles.length; i++) {
     let p = particles[i];
@@ -31,19 +36,47 @@ class Particle {
     // properties (variables): particle's characteristics
     this.x = startX;
     this.y = startY;
-    this.dia = 30;
+    this.outerRadius = random(10, 60)
+    this.innerRadius = this.outerRadius/2
+    this.numPoints = 5
+    this.color = color(random(100,255), random(100,255), random(100, 255))
+    this.vx = random(-2,2)
+    this.vy = random(-2,2)
+    this.lifespan = 255
   }
   // methods (functions): particle's behaviors
   update() {
-    // (add)
+    this.x += this.vx
+    this.y += this.vy
+    this.lifespan -=0.5
   }
   display() {
     // particle's appearance
     push();
     translate(this.x, this.y);
 
-    circle(0, 0, this.dia);
+    stroke(245, 194, 10)
+    strokeWeight(1)
+    fill(this.color)
+    beginShape()
 
+    for(let i = 0; i < this.numPoints *2; i++){
+      let angle = map(i, 0, this.numPoints *2, 0, TWO_PI)
+      let rad = (i % 2 == 0)? this.outerRadius:this.innerRadius
+      let px = cos(angle) * rad
+      let py = sin(angle) * rad
+      vertex(px, py)
+    }
+    endShape(CLOSE)
+
+    for(let i =0; i<this.numPoints*2; i++){
+      let angle = map(i, 0, this.numPoints*2, 0, TWO_PI)
+      let rad = (i%2==0)? this.outerRadius: this.innerRadius
+      let px = cos(angle)*rad
+      let py = sin(angle)*rad
+
+      line(0,0,px,py)
+    }
     pop();
   }
 }
