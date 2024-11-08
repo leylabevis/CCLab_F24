@@ -15,11 +15,11 @@ function setup() {
 }
 
 function draw() {
-  background(50);
+  background(0);
 
   particles.push(new Particle(mouseX, mouseY))
 
-  if(particles.length>100){
+  if(particles.length>200){
     particles.shift()
   }
   // update and display
