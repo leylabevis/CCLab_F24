@@ -1,0 +1,144 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+  background-color: #111;
+  color: #fff;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 5%;
+  background: linear-gradient(90deg, #f72585, #3a0ca3);
+  color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  border-bottom: 2px solid #f9f9f9;
+}
+
+header .logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+}
+
+header nav a {
+  margin: 0 10px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  color: #fff;
+  padding: 5px 10px;
+  transition: background-color 0.3s ease;
+}
+
+header nav a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* Hero Section */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 90vh;
+  padding: 5%;
+  background: radial-gradient(circle, #f72585, #3a0ca3, #4361ee, #4cc9f0);
+  color: white;
+  position: relative;
+}
+
+.hero-content {
+  width: 50%;
+}
+
+.hero-content h1 {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  color: #fff;
+}
+
+.hero-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1.5rem;
+  color: #f9f9f9;
+}
+
+.cta-button {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #fff;
+  background-color: #f72585;
+  border-radius: 5px;
+  text-decoration: none;
+  transition: background 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #b5179e;
+}
+
+/* Interactive Section */
+.interactive {
+  padding: 5%;
+  background: linear-gradient(to right, #f9c74f, #f9844a);
+}
+
+.interactive-animation {
+  height: 300px;
+  background-color: #fff;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+/* Sound Library Section */
+.sound-library {
+  padding: 5%;
+  background: linear-gradient(to left, #4cc9f0, #4895ef);
+  text-align: center;
+  color: white;
+}
+
+.sound-library .sound-boxes {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.sound-library .sound-box {
+  width: 150px;
+  padding: 20px;
+  margin: 10px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, background 0.3s ease;
+  color: #fff;
+}
+
+.sound-library .sound-box:hover {
+  transform: scale(1.1);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+/* Footer */
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
+  font-size: 0.9rem;
+}
