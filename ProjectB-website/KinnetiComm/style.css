@@ -20,6 +20,9 @@ header {
   padding: 10px 5%;
   background: linear-gradient(90deg, #f72585, #3a0ca3);
   color: white;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
 header .logo {
@@ -28,35 +31,33 @@ header .logo {
   letter-spacing: 0.1rem;
 }
 
-header nav a {
-  margin: 0 10px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 1rem;
-  color: #fff;
-  padding: 5px 10px;
-  transition: background-color 0.3s ease;
+/* Gradient Background Wrapper */
+.background-gradient {
+  background: radial-gradient(circle, #4cc9f0, #4895ef, #f72585, #3a0ca3);
+  min-height: 100vh; /* Ensures the gradient covers the full page */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-header nav a:hover {
-  background-color: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-}
-
-/* Hero Section */
+/* Hero Section (Move, Create, Express) */
 .hero {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 100vh; /* Takes full viewport height */
   padding: 5%;
-  background: radial-gradient(circle, #4cc9f0, #4895ef, #f72585, #3a0ca3);
   color: white;
+  position: relative;
+  z-index: 1;
 }
 
 .hero-content {
   text-align: center;
   max-width: 600px;
+  position: sticky;
+  top: 0; /* Keeps it sticky when scrolling */
+  padding-top: 50px; /* Adds some space from top */
 }
 
 .hero-content h1 {
@@ -69,22 +70,20 @@ header nav a:hover {
   margin-bottom: 1.5rem;
 }
 
+/* Arrow Style */
 .arrow-down {
-  width: 0;
-  height: 0;
-  border-left: 10px solid transparent;
-  border-right: 10px solid transparent;
-  border-top: 10px solid #fff;
+  font-size: 2rem;
   margin-top: 20px;
-  margin-left: auto;
-  margin-right: auto;
+  display: block;
+  text-align: center;
 }
 
 /* Dance Dictionary Section */
 .dance-dictionary {
   padding: 5%;
-  background: #111;
   text-align: center;
+  z-index: 1;
+  margin-top: 50px; /* Adds space between the hero and dictionary section */
 }
 
 .dance-dictionary h2 {
