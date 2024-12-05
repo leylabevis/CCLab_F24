@@ -78,12 +78,43 @@ header .logo {
     text-align: center;
 }
 
+/* New Flexbox: The Diversity of Dance */
+.diversity-of-dance {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh; /* Takes full viewport height */
+    padding: 5%;
+    color: white;
+    position: relative;
+    z-index: 1;
+    margin-top: 50px;
+}
+
+.diversity-content {
+    text-align: center;
+    max-width: 800px;
+    position: sticky;
+    top: 0; /* Keeps it sticky when scrolling */
+    padding-top: 50px;
+}
+
+.diversity-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.diversity-content p {
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
 /* Dance Dictionary Section */
 .dance-dictionary {
     padding: 5%;
     text-align: center;
     z-index: 1;
-    margin-top: 50px; /* Adds space between the hero and dictionary section */
+    margin-top: 50px; /* Adds space between the diversity and dictionary section */
 }
 
 .dance-dictionary h2 {
