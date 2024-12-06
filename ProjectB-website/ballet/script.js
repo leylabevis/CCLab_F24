@@ -4,7 +4,6 @@ let amplitude;
 let isPlaying = false;
 
 function preload() {
-  // Load the new audio file
   sound = loadSound('adagio.mp3', 
     () => {
       console.log("Sound loaded successfully.");
@@ -17,35 +16,27 @@ function preload() {
 }
 
 function setup() {
-  createCanvas(windowWidth, windowHeight);
-  background(20); // Set initial background
-  amplitude = new p5.Amplitude();
-
-  // Automatically start playing music
-  if (sound.isLoaded()) {
-    sound.loop();
-    isPlaying = true;
-  }
+  let canvas = createCanvas(600, 300);
+  canvas.parent("p5-canvas-container");
+  background(0); 
+  amplitude = new p5.Amplitude(); 
 }
 
 function draw() {
   if (isPlaying) {
-    background(20, 20, 30, 20); // Semi-transparent background for fading effect
+    background(20, 20, 30, 20); 
 
-    let level = amplitude.getLevel(); // Get current amplitude
-    let numParticles = int(map(level, 0, 0.5, 1, 15)); // More particles at higher amplitude
+    let level = amplitude.getLevel(); 
+    let numParticles = int(map(level, 0, 0.5, 1, 15)); 
 
-    // Add new particles based on amplitude
     for (let i = 0; i < numParticles; i++) {
-      particles.push(new Particle(random(width), random(height)));
+      particles.push(new Particle(random(width), random(height), level));
     }
 
-    // Update and display particles
     for (let i = particles.length - 1; i >= 0; i--) {
       particles[i].update(level);
       particles[i].show();
 
-      // Remove particles that are too small
       if (particles[i].size < 2) {
         particles.splice(i, 1);
       }
@@ -54,7 +45,6 @@ function draw() {
 }
 
 function mousePressed() {
-  // Toggle play/pause on click
   if (isPlaying) {
     sound.pause();
     isPlaying = false;
@@ -64,37 +54,50 @@ function mousePressed() {
   }
 }
 
-// Particle Class
 class Particle {
-  constructor(x, y) {
+  constructor(x, y, level) {
     this.x = x;
     this.y = y;
     this.size = random(5, 20);
     this.speedX = random(-2, 2);
     this.speedY = random(-2, 2);
-    this.color = color(random(100, 255), random(100, 200), random(150, 255), 200);
+    this.color = this.generateColor(level);
+    this.shape = int(random(0, 3)); 
   }
 
   update(level) {
-    // Move particle based on speed and amplitude
     this.x += this.speedX * (1 + level * 5);
     this.y += this.speedY * (1 + level * 5);
 
-    // Wrap around canvas
     if (this.x > width) this.x = 0;
     if (this.x < 0) this.x = width;
     if (this.y > height) this.y = 0;
     if (this.y < 0) this.y = height;
 
-    // Adjust size and color vibrancy with amplitude
-    this.size -= 0.1;
+    this.size = map(level, 0, 0.5, 5, 50); 
+    this.color = this.generateColor(level); 
+  }
+
+  generateColor(level) {
     let vibrancy = map(level, 0, 0.5, 150, 255);
-    this.color = color(random(100, vibrancy), random(100, vibrancy), random(150, vibrancy), 200);
+    return color(random(100, vibrancy), random(100, vibrancy), random(150, vibrancy), 200);
   }
 
   show() {
     noStroke();
     fill(this.color);
-    ellipse(this.x, this.y, this.size, this.size);
+
+    if (this.shape === 0) {
+      ellipse(this.x, this.y, this.size, this.size); 
+    } else if (this.shape === 1) {
+      rect(this.x, this.y, this.size, this.size);
+    } else if (this.shape === 2) {
+      this.drawTriangle(this.x, this.y, this.size); 
+    }
+  }
+
+  drawTriangle(x, y, size) {
+    let h = size * sqrt(3) / 2; 
+    triangle(x, y - h / 2, x - size / 2, y + h / 2, x + size / 2, y + h / 2);
   }
 }
