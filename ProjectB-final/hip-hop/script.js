@@ -3,6 +3,15 @@ let sound;
 let amplitude;
 let isPlaying = false;
 
+const materialColors = [
+  '#F44336', // Red
+  '#E91E63', // Pink
+  '#9C27B0', // Purple
+  '#2196F3', // Blue
+  '#00BCD4', // Cyan
+  '#FF9800'  // Orange
+];
+
 function preload() {
   sound = loadSound('hiphop.mp3', 
     () => {
@@ -16,9 +25,9 @@ function preload() {
 }
 
 function setup() {
-  let canvas = createCanvas(600, 300);
+  let canvas=createCanvas(600, 350);
   canvas.parent("p5-canvas-container")
-  background(0); 
+  background(20); 
   amplitude = new p5.Amplitude();
 }
 
@@ -62,7 +71,7 @@ class Particle {
     this.speedX = random(-4, 4);
     this.speedY = random(-4, 4);
     this.angle = random(TWO_PI);
-    this.color = this.generateColor(level);
+    this.color = this.generateColor(); 
     this.sharpness = random(0.5, 2); 
     this.history = []; 
   }
@@ -83,12 +92,11 @@ class Particle {
     }
 
     this.size = map(level, 0, 0.5, 10, 60); 
-    this.color = this.generateColor(level); 
   }
 
-  generateColor(level) {
-    let vibrancy = map(level, 0, 0.5, 200, 255); 
-    return color(random(200, 255), vibrancy, random(150, 255), 150);
+  generateColor() {
+    let colorIndex = int(random(materialColors.length));
+    return color(materialColors[colorIndex]); 
   }
 
   show() {

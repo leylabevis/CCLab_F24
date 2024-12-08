@@ -6,7 +6,7 @@
   
   body {
     font-family: 'Montserrat', sans-serif;
-    background-color: #ffecb3; 
+    background-color: #ffb6c1; 
     color: #222;
     overflow-x: hidden;
   }
@@ -45,7 +45,7 @@
   
   .interactive {
     padding: 5%;
-    background-color: #ffcc80; 
+    background-color: #ffb6c1; 
     text-align: center;
     color: #111; 
   }
