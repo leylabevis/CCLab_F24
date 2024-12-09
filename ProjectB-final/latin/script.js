@@ -13,7 +13,7 @@ function setup() {
   let canvasHeight = windowHeight * 0.7
   let canvas=createCanvas(canvasWidth, canvasHeight);
   canvas.parent("p5-canvas-container")
-  img.resize(width, height); 
+  img.resize(canvasWidth, canvasHeight); 
 
   amplitude = new p5.Amplitude();
 }
