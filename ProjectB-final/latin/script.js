@@ -9,7 +9,9 @@ function preload() {
 }
 
 function setup() {
-  let canvas=createCanvas(800, 450);
+  let canvasWidth = windowWidth * 0.8
+  let canvasHeight = windowHeight * 0.7
+  let canvas=createCanvas(canvasWidth, canvasHeight);
   canvas.parent("p5-canvas-container")
   img.resize(width, height); 
 
@@ -20,11 +22,11 @@ function draw() {
   if (!isPlaying) {
     image(img, 0, 0, width, height);
   } else {
-    background(220, 5);
+    background(220, 1);
     img.loadPixels(); 
 
     let level = amplitude.getLevel(); 
-    let circleMaxSize = map(level, 0, 0.3, 10, 40); 
+    let circleMaxSize = map(level, 0, 0.3, 20, 80); 
 
     for (let n = 0; n < 100; n++) {
       let x = floor(random(img.width)); 

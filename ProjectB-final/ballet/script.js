@@ -10,7 +10,9 @@ function preload() {
 }
 
 function setup() {
-  let canvas=createCanvas(800, 450);
+  let canvasWidth = windowWidth * 0.8
+  let canvasHeight = windowHeight * 0.6
+  let canvas=createCanvas(canvasWidth, canvasHeight);
   canvas.parent("p5-canvas-container")
   colorMode(HSB, 360, 100, 100); 
   background(0);
