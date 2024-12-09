@@ -25,7 +25,7 @@ function preload() {
 }
 
 function setup() {
-  let canvas=createCanvas(600, 350);
+  let canvas=createCanvas(800, 450);
   canvas.parent("p5-canvas-container")
   background(20); 
   amplitude = new p5.Amplitude();

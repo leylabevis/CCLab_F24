@@ -10,7 +10,7 @@ function preload() {
 }
 
 function setup() {
-  let canvas=createCanvas(600, 350);
+  let canvas=createCanvas(800, 450);
   canvas.parent("p5-canvas-container")
   colorMode(HSB, 360, 100, 100); 
   background(0);
@@ -22,7 +22,7 @@ function draw() {
     background(0, 20); 
 
     let level = amplitude.getLevel(); 
-    let starSize = map(level, 0, 0.5, 5, 100); 
+    let starSize = map(level, 0, 0.5, 5, 200); 
 
     let x = map(noise(frameCount * 0.01), 0, 1, 0, width);
     let y = map(noise(frameCount * 0.02), 0, 1, 0, height);
